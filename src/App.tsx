@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BuilderComponent, builder } from '@builder.io/react';
 
-function App() {
+builder.init('c98546b785c64577a2bb69b50a526eba');
+
+export const getStaticProps = async () => {
+  // Fetch the builderJson data using Builder.io SDK
+  const builderJson = await builder.get('page', { url: '/' }).promise();
+
+  return {
+    props: {
+      builderJson,
+    },
+  };
+};
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BuilderComponent model="page"  />
+    </>
   );
 }
-
-export default App;
