@@ -1,6 +1,7 @@
 import { BuilderComponent, builder } from '@builder.io/react';
 
 builder.init('c98546b785c64577a2bb69b50a526eba');
+builder.apiVersion = "v3";
 
 export const getStaticProps = async () => {
   // Fetch the builderJson data using Builder.io SDK
